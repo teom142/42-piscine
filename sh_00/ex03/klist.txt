@@ -1,0 +1,5 @@
+Credentials cache: API:5B36B6DE-539B-4E23-824F-C630DEF8029F
+        Principal: teom@42SEOUL.KR
+
+  Issued                Expires               Principal
+Nov 18 20:13:14 2020  Nov 19 06:13:14 2020  krbtgt/42SEOUL.KR@42SEOUL.KR
