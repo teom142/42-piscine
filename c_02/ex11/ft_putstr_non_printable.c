@@ -6,7 +6,7 @@
 /*   By: teom <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 15:39:29 by teom              #+#    #+#             */
-/*   Updated: 2020/11/25 16:26:18 by teom             ###   ########.fr       */
+/*   Updated: 2020/11/25 20:52:27 by teom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void		ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-int			it_is_printable(unsigned char c)
+int			it_is_printable(char c)
 {
 	if (' ' <= c && c <= '~')
 	{
@@ -26,44 +26,30 @@ int			it_is_printable(unsigned char c)
 	return (0);
 }
 
-char		to_hex(unsigned char c)
+void		print_hex(char c)
 {
-	c = c + '0';
-	if (c > '9')
-	{
-		return (c + 39);
-	}
-	return (c);
-}
+	char	*hex;
 
-void		print_hex(unsigned char c)
-{
-	char hex1;
-	char hex2;
-
+	hex = "0123456789abcdef";
 	write(1, "\\", 2);
-	hex1 = (int)c / 16;
-	hex2 = (int)c % 16;
-	ft_putchar(to_hex(hex1));
-	ft_putchar(to_hex(hex2));
+	ft_putchar(hex[(int)c / 16]);
+	ft_putchar(hex[(int)c % 16]);
 }
 
 void		ft_putstr_non_printable(char *str)
 {
 	int				index;
-	unsigned char	*pmt;
 
 	index = 0;
-	pmt = (unsigned char*)str;
-	while (pmt[index])
+	while (str[index])
 	{
-		if (!it_is_printable(pmt[index]))
+		if (!it_is_printable(str[index]))
 		{
-			print_hex(pmt[index]);
+			print_hex(str[index]);
 		}
 		else
 		{
-			ft_putchar(pmt[index]);
+			ft_putchar(str[index]);
 		}
 		index++;
 	}

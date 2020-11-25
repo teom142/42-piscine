@@ -6,7 +6,7 @@
 /*   By: teom <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 15:43:40 by teom              #+#    #+#             */
-/*   Updated: 2020/11/25 16:18:11 by teom             ###   ########.fr       */
+/*   Updated: 2020/11/25 19:39:33 by teom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-void	print_addr(long long addr, int cnt)
+void	print_addr(unsigned long long addr, unsigned int cnt)
 {
 	if (!addr)
 	{
@@ -34,9 +34,9 @@ void	print_addr(long long addr, int cnt)
 	ft_putchar(g_hex[addr % 16]);
 }
 
-void	char_to_hex(char *ptr, int len)
+void	char_to_hex(unsigned char *ptr, unsigned int len)
 {
-	int i;
+	unsigned int i;
 
 	i = 0;
 	while (i < len)
@@ -63,8 +63,8 @@ void	char_to_hex(char *ptr, int len)
 void	*ft_print_memory(void *addr, unsigned int size)
 {
 	unsigned int	i;
-	int				len;
-	char			*curr_add;
+	unsigned int	len;
+	unsigned char	*curr_add;
 
 	g_hex = "0123456789abcdef";
 	i = 0;
@@ -74,8 +74,8 @@ void	*ft_print_memory(void *addr, unsigned int size)
 			len = 16;
 		else
 			len = size;
-		curr_add = (char*)addr + i;
-		print_addr((long long)curr_add, 0);
+		curr_add = (unsigned char*)addr + i;
+		print_addr((unsigned long long)curr_add, 0);
 		ft_putchar(':');
 		char_to_hex(curr_add, len);
 		ft_putchar(' ');
