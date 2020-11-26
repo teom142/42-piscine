@@ -1,4 +1,16 @@
-int	it_is_printable(char c)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_str_is_printable.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: teom <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/11/25 16:21:04 by teom              #+#    #+#             */
+/*   Updated: 2020/11/25 16:21:05 by teom             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int		it_is_printable(char c)
 {
 	if (' ' <= c && c <= '~')
 	{
@@ -7,7 +19,7 @@ int	it_is_printable(char c)
 	return (0);
 }
 
-int	ft_str_is_printable(char *str)
+int		ft_str_is_printable(char *str)
 {
 	int index;
 

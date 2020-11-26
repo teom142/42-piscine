@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putstr_non_printable.c                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: teom <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/11/25 15:39:29 by teom              #+#    #+#             */
+/*   Updated: 2020/11/25 20:52:27 by teom             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
-void	ft_putchar(char c)
+void		ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
 
-int	it_is_printable(char c)
+int			it_is_printable(char c)
 {
 	if (' ' <= c && c <= '~')
 	{
@@ -14,32 +26,19 @@ int	it_is_printable(char c)
 	return (0);
 }
 
-char	to_hex(char c)
+void		print_hex(char c)
 {
-	c = c + '0';
-	if (c > '9')
-	{
-		return (c+39);
-	}
-	return (c);
-}
-void	print_hex(char c)
-{
-	char hex1;
-	char hex2;
+	char	*hex;
 
+	hex = "0123456789abcdef";
 	write(1, "\\", 2);
-	hex1 = (int)c / 16;
-	hex2 = (int)c % 16;
-
-	ft_putchar(to_hex(hex1));
-	ft_putchar(to_hex(hex2));
+	ft_putchar(hex[(int)c / 16]);
+	ft_putchar(hex[(int)c % 16]);
 }
 
-
-void	ft_putstr_non_printable(char *str)
+void		ft_putstr_non_printable(char *str)
 {
-	int index;
+	int				index;
 
 	index = 0;
 	while (str[index])
@@ -55,10 +54,3 @@ void	ft_putstr_non_printable(char *str)
 		index++;
 	}
 }
-
-int main()
-{
-	char str[] = "Coucou\ntu vas bien ?";
-	ft_putstr_non_printable(str);
-}
-

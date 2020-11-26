@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: teom <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/11/25 16:22:58 by teom              #+#    #+#             */
+/*   Updated: 2020/11/25 20:46:13 by teom             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-	int index;
+	unsigned int		index;
 
 	index = 0;
-	while (src[index] && index < size-1)
+	while (src[index] && index < size - 1)
 	{
 		dest[index] = src[index];
 		index++;
 	}
-	index = 0;
-	while (dest[index])
+	dest[index] = 0;
+	while (src[index])
 	{
 		index++;
 	}
