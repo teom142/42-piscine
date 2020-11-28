@@ -12,12 +12,12 @@
 
 #include <unistd.h>
 
-void		ft_putchar(char c)
+void		ft_putchar(unsigned char c)
 {
 	write(1, &c, 1);
 }
 
-int			it_is_printable(char c)
+int		it_is_printable(unsigned char c)
 {
 	if (' ' <= c && c <= '~')
 	{
@@ -26,9 +26,9 @@ int			it_is_printable(char c)
 	return (0);
 }
 
-void		print_hex(char c)
+void		print_hex(unsigned char c)
 {
-	char	*hex;
+	unsigned char	*hex;
 
 	hex = "0123456789abcdef";
 	write(1, "\\", 2);
@@ -38,7 +38,7 @@ void		print_hex(char c)
 
 void		ft_putstr_non_printable(char *str)
 {
-	int				index;
+	int	index;
 
 	index = 0;
 	while (str[index])
