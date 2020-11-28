@@ -28,7 +28,7 @@ int		it_is_printable(unsigned char c)
 
 void		print_hex(unsigned char c)
 {
-	unsigned char	*hex;
+	char	*hex;
 
 	hex = "0123456789abcdef";
 	write(1, "\\", 2);
