@@ -1,19 +1,22 @@
-#include <unistd.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: teom <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/11/30 00:17:59 by teom              #+#    #+#             */
+/*   Updated: 2020/11/30 00:24:55 by teom             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int			ft_strlen(char *str)
-{
-	int len;
-	
-	len = 0;
-	while(*str)
-	{
-		str++;
-		len++;
-	}
-	return (len);
-}
+#include <unistd.h>
 
 void		ft_putstr(char *str)
 {
-		write(1, str, ft_strlen(str));
+	while (*str)
+	{
+		write(1, str, 1);
+		str++;
+	}
 }
