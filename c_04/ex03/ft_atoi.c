@@ -6,7 +6,7 @@
 /*   By: teom <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 00:32:10 by teom              #+#    #+#             */
-/*   Updated: 2020/11/30 00:32:21 by teom             ###   ########.fr       */
+/*   Updated: 2020/11/30 05:18:50 by teom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		ft_atoi(char *str)
 				str++;
 			}
 			if (minus_num % 2)
-				return (- 1 * val_atoi);
+				return (-1 * val_atoi);
 			else
 				return (val_atoi);
 		}
