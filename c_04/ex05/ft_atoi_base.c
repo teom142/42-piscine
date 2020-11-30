@@ -6,7 +6,7 @@
 /*   By: teom <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 04:33:21 by teom              #+#    #+#             */
-/*   Updated: 2020/11/30 05:17:23 by teom             ###   ########.fr       */
+/*   Updated: 2020/11/30 20:29:13 by teom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ int		base_exec_len(char *base)
 		if (base_over[(int)base[len]] ||
 				base[len] == '+' ||
 				base[len] == '-' ||
-				base[len] <= ' ')
+				base[len] == ' '||
+				(base[len] >= '\t' && base[len] <= '\r'))
 			return (0);
 		base_over[(int)base[len]] = 1;
 		len++;
