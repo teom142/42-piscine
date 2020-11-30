@@ -6,7 +6,7 @@
 /*   By: teom <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 19:58:46 by teom              #+#    #+#             */
-/*   Updated: 2020/11/21 20:06:27 by teom             ###   ########.fr       */
+/*   Updated: 2020/11/30 16:53:55 by teom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ void	ft_rev_int_tab(int *tab, int size)
 	int temp;
 
 	i = 0;
-	while (i <= size / 2)
+	while (i < size--)
 	{
 		temp = tab[i];
-		tab[i] = tab[size - 1 - i];
-		tab[size - 1 - i] = temp;
+		tab[i] = tab[size];
+		tab[size] = temp;
 		i++;
 	}
 }
