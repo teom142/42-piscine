@@ -6,13 +6,13 @@
 /*   By: teom <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 12:23:47 by teom              #+#    #+#             */
-/*   Updated: 2020/11/30 13:32:10 by teom             ###   ########.fr       */
+/*   Updated: 2020/11/30 15:59:24 by teom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int 	g_chess[10];
+int		g_chess[10];
 int		g_pos_case;
 
 int		back_track(int index, int val)
@@ -28,16 +28,16 @@ int		back_track(int index, int val)
 			return (0);
 		if (g_chess[j] == val - index + j)
 			return (0);
-		j++;	
+		j++;
 	}
 	return (1);
 }
 
 void	chess_dfs(int index)
 {
-	int i;
-	int j;
-	char c;
+	int		i;
+	int		j;
+	char	c;
 
 	if (index == 9)
 	{
@@ -49,14 +49,14 @@ void	chess_dfs(int index)
 			j++;
 		}
 		g_pos_case++;
-		write(1,"\n",1);
+		write(1, "\n", 1);
 		return ;
 	}
 	i = 0;
 	while (i < 10)
 	{
-		g_chess[index+1] = i;
-		if (back_track(index + 1,g_chess[index + 1]))
+		g_chess[index + 1] = i;
+		if (back_track(index + 1, g_chess[index + 1]))
 			chess_dfs(index + 1);
 		i++;
 	}

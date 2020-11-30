@@ -6,14 +6,14 @@
 /*   By: teom <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 06:11:12 by teom              #+#    #+#             */
-/*   Updated: 2020/11/30 06:53:03 by teom             ###   ########.fr       */
+/*   Updated: 2020/11/30 15:57:39 by teom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		ft_is_prime(int nb)
 {
-	long long i;
-	int cnt;
+	long long	i;
+	int			cnt;
 
 	i = 5;
 	cnt = 0;
@@ -27,7 +27,7 @@ int		ft_is_prime(int nb)
 	{
 		if (nb % i == 0 || nb % (i + 2) == 0)
 			return (0);
-		i+=6;
+		i += 6;
 	}
 	return (1);
 }
