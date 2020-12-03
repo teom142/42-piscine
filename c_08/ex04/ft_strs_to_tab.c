@@ -6,14 +6,14 @@
 /*   By: teom </var/mail/teom>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 21:08:11 by teom              #+#    #+#             */
-/*   Updated: 2020/12/03 22:51:43 by teom             ###   ########.fr       */
+/*   Updated: 2020/12/04 00:43:27 by teom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "ft_stock_str.h"
 
-int		str_len(char *str)
+int						str_len(char *str)
 {
 	int		len;
 
@@ -23,7 +23,7 @@ int		str_len(char *str)
 	return (len);
 }
 
-void	str_cpy(char *dest, char *src)
+void					str_cpy(char *dest, char *src)
 {
 	while (*src)
 		*(dest++) = *(src++);
@@ -41,12 +41,12 @@ struct s_stock_str		*ft_strs_to_tab(int ac, char **av)
 	i = 0;
 	while (i < ac)
 	{
-		 retu[i].size = str_len(av[i]);
-		 retu[i].str = (char*)malloc(retu[i].size + 1);
-		 retu[i].copy = (char*)malloc(retu[i].size + 1);
-		 str_cpy(retu[i].str, av[i]);
-		 str_cpy(retu[i].copy, av[i]);
-		 i++;
+		retu[i].size = str_len(av[i]);
+		retu[i].str = (char*)malloc(retu[i].size + 1);
+		retu[i].copy = (char*)malloc(retu[i].size + 1);
+		str_cpy(retu[i].str, av[i]);
+		str_cpy(retu[i].copy, av[i]);
+		i++;
 	}
 	retu[i].str = 0;
 	return (retu);
