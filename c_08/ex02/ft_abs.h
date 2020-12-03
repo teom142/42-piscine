@@ -6,12 +6,12 @@
 /*   By: teom </var/mail/teom>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 11:00:13 by teom              #+#    #+#             */
-/*   Updated: 2020/12/03 11:03:22 by teom             ###   ########.fr       */
+/*   Updated: 2020/12/03 21:04:00 by teom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_ABS
-#define FT_ABS
+#ifndef FT_ABS_H
+# define FT_ABS_H
 
-#define ABS(Value) (Value < 0 ? -1 * Value : Value)
+# define ABS(Value) (Value < 0 ? -1 * Value : Value)
 #endif
