@@ -6,7 +6,7 @@
 /*   By: teom </var/mail/teom>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 10:11:57 by teom              #+#    #+#             */
-/*   Updated: 2020/12/03 16:38:43 by teom             ###   ########.fr       */
+/*   Updated: 2020/12/03 20:49:18 by teom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,7 @@ int		ft_atoi_base(char *str, char *base)
 	if (base_len <= 1)
 		return (0);
 	minus_num = 1;
-	while (*str <= ' ' ||
-			(*str >= '\t' && *str <= '\r'))
+	while (*str <= ' ' || (*str >= '\t' && *str <= '\r'))
 		str++;
 	while (*str == '+' || *str == '-')
 		if (*(str++) == '-')
