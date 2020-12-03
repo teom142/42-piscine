@@ -6,7 +6,7 @@
 /*   By: teom </var/mail/teom>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 10:11:57 by teom              #+#    #+#             */
-/*   Updated: 2020/12/03 10:28:32 by teom             ###   ########.fr       */
+/*   Updated: 2020/12/03 16:38:43 by teom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ int		ft_atoi_base(char *str, char *base)
 		index_c = base_index(base, *(str));
 		if (index_c != -1)
 		{
-			ans_num *= base_len;
-			ans_num += (minus_num * index_c);
+			ret_num *= base_len;
+			ret_num += (minus_num * index_c);
 		}
 		str++;
 	}

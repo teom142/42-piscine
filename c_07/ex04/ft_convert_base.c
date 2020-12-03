@@ -33,18 +33,18 @@ int		ret_strlen(int nbr, int base_len)
 		return (1);
 	if (nbr < 0)
 		ret_len++;
-	while (nbr < base_len)
+	while (nbr >= base_len)
 	{
 		nbr /= base_len;
 		ret_len++;
 	}
-	return (ret_len);
+	return (ret_len + 1);
 }
 
 void	cal_base(char *dest, int num, char *base, int base_len, int i)
 {
 	if (num >= base_len)
-		cal_base(dest, num / base_len, base, base_len, i+1);
+		cal_base(dest, num / base_len, base, base_len, i - 1);
 	dest[i] = base[num % base_len];
 }
 
@@ -59,10 +59,11 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	base_to_len = chk_base_to(base_to);
 	if (!from_number)
 		return (0);
-	if (chk_base_to <= 1)
+	if (base_to_len <= 1)
 		return (0);
 	ret_len = ret_strlen(from_number, base_to_len);
-	ret_str = (char*)malloc(ret_len + 1);
-	cal_base(ret_str, from_number, base_to, base_to_len, 0);
+	ret_str = (char*)malloc(ret_len);
+	cal_base(ret_str, from_number, base_to, base_to_len, ret_len - 1);
+	ret_str[ret_len] = 0;
 	return (ret_str);
 }
