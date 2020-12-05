@@ -1,13 +1,11 @@
 #include "rush02.h"
 
-void	get_line(int fd, char **argv)
+void	get_line(int fd, char *argv)
 {
 	char	c;
 	int	rd_suc;
 	char	*line;
-	int	print_suc;
 
-	print_suc = 1;
 	rd_suc = read(fd, &c, 1);
 	while (rd_suc)
 	{
@@ -18,10 +16,9 @@ void	get_line(int fd, char **argv)
 			rd_suc = read(fd, &c, 1);
 			ft_charcat(line, c);
 		}
-		if (chk_number(argv[1], line))
+		if (chk_number(argv, line))
 		{
 			ft_putline(line);
-			print_suc = 0;
 		}
 		rd_suc = read(fd, &c, 1);
 		free(line);
@@ -29,7 +26,7 @@ void	get_line(int fd, char **argv)
 	close(fd);
 }
 
-void	rush02(char **argv)
+void	rush02(char *argv)
 {
 	int	fd;
 
@@ -45,8 +42,13 @@ void	rush02(char **argv)
 
 int	main(int argc, char *argv[])
 {
-	if (argc != 2)
-		write(1, "error", 5);
-	rush02(argv);
+	if (argc == 2)
+		rush02(argv[1]);
+	/*
+	else if(argc == 3)
+	rush02(argv[1]);
+	rush02(argv[2]);
+	rush02(argv[3]);
+	*/
 	return (0);
 }
