@@ -6,7 +6,7 @@
 /*   By: teom <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/06 18:16:13 by teom              #+#    #+#             */
-/*   Updated: 2020/12/06 22:28:26 by teom             ###   ########.fr       */
+/*   Updated: 2020/12/06 23:15:24 by teom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,10 @@ unsigned int	find_max_num(char *dict, unsigned int max_size)
 	return (g_max_num);
 }
 
-void			print_error(void)
-{
-	write(1, "error", 5);
-	write(1, "\n", 1);
-}
-
 void			chk_argv(char *argv, unsigned int max_num)
 {
 	if (ft_strlen(argv) > max_num + 2)
-		write(1, "Dict Error\n", 11);
+		write(1, "Dict Error", 10);
 	else
 		print_thou(argv);
 }
@@ -73,7 +67,7 @@ int				var_check(char *var)
 	{
 		if (var[n] < '0' || '9' < var[n])
 		{
-			print_error();
+			write(1, "error\n", 6);
 			return (1);
 		}
 		n++;

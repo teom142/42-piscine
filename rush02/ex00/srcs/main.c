@@ -6,7 +6,7 @@
 /*   By: teom <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/06 18:15:27 by teom              #+#    #+#             */
-/*   Updated: 2020/12/06 22:24:47 by teom             ###   ########.fr       */
+/*   Updated: 2020/12/06 23:12:15 by teom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,14 @@ void			rush02(char *argv)
 	fd = open(g_default_dict, O_RDONLY);
 	if (fd == -1)
 	{
-		write(1, "Dict Error\n", 11);
+		write(1, "Dict Error", 10);
 		return ;
 	}
 	else
 	{
 		if (!(err = (char*)malloc(g_size)))
 		{
-			print_error();
+			write(1, "error", 5);
 			return ;
 		}
 		get_line(fd, argv);
@@ -106,6 +106,7 @@ int				main(int argc, char *argv[])
 		chk_argv(argv[2], max_num);
 	}
 	else
-		write(1, "Error\n", 6);
+		write(1, "Error", 1);
+	write(1, "\n", 1);
 	return (0);
 }
