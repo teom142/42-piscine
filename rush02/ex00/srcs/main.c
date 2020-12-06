@@ -6,7 +6,7 @@
 /*   By: teom <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/06 18:15:27 by teom              #+#    #+#             */
-/*   Updated: 2020/12/06 20:57:41 by teom             ###   ########.fr       */
+/*   Updated: 2020/12/06 22:24:47 by teom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,10 +94,7 @@ int				main(int argc, char *argv[])
 	{
 		if (var_check(argv[1]))
 			return (0);
-		if (ft_strlen(argv[1]) > max_num + 3)
-			write(1, "Dict Error\n", 11);
-		else
-			print_thou(argv[1]);
+		chk_argv(argv[1], max_num);
 	}
 	else if (argc == 3)
 	{
@@ -106,10 +103,7 @@ int				main(int argc, char *argv[])
 		g_default_dict = argv[1];
 		fd = open(g_default_dict, g_size);
 		max_num = find_max_num(g_default_dict, g_size);
-		if (ft_strlen(argv[2]) > max_num + 2)
-			write(1, "Dict Error\n", 11);
-		else
-			print_thou(argv[2]);
+		chk_argv(argv[2], max_num);
 	}
 	else
 		write(1, "Error\n", 6);

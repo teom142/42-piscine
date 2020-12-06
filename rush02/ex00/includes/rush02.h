@@ -6,7 +6,7 @@
 /*   By: teom <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/06 20:46:13 by teom              #+#    #+#             */
-/*   Updated: 2020/12/06 20:50:02 by teom             ###   ########.fr       */
+/*   Updated: 2020/12/06 22:23:03 by teom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 void			print_error(void);
 int				var_check(char *var);
+void			chk_argv(char *argv, unsigned int max_num);
 void			rush02_with_space(char *str);
 void			print_init(char *hund);
 void			ft_charcat_3(char *hund, char *ten, char *one, char *str);
