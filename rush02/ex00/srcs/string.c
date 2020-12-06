@@ -1,14 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   string.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: teom <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/06 20:38:50 by teom              #+#    #+#             */
+/*   Updated: 2020/12/06 20:38:50 by teom             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "rush02.h"
 
-int	chk_number(char *num, char *line)
+int				chk_number(char *num, char *line)
 {
 	while ((*line != ':' && *line != ' ') || *num)
-		if (*num++ != *line++)
+	{
+		if (*num != *line)
 			return (0);
+		line++;
+		num++;
+	}
 	return (1);
 }
 
-void	ft_charcat(char *dest, char c)
+void			ft_charcat(char *dest, char c)
 {
 	while (*dest)
 		dest++;
@@ -16,14 +32,24 @@ void	ft_charcat(char *dest, char c)
 	*dest = 0;
 }
 
-int	it_is_printable(char c)
+int				it_is_printable(char c)
 {
 	if (c >= ' ' && c <= '~')
 		return (1);
 	return (0);
 }
 
-void	ft_putline(char *line)
+unsigned int	ft_strlen(char *str)
+{
+	int		len;
+
+	len = 0;
+	while (str[len])
+		len++;
+	return (len);
+}
+
+void			ft_putline(char *line)
 {
 	while (*line != ':')
 		line++;

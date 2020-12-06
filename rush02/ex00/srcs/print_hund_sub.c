@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_range.c                                         :+:      :+:    :+:   */
+/*   print_hund_sub.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: teom <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/06 10:22:54 by teom              #+#    #+#             */
-/*   Updated: 2020/12/06 10:22:55 by teom             ###   ########.fr       */
+/*   Created: 2020/12/06 20:33:40 by teom              #+#    #+#             */
+/*   Updated: 2020/12/06 20:35:22 by teom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "rush02.h"
 
-int		*ft_range(int min, int max)
+void	rush02_with_space(char *str)
 {
-	int		*range_num;
-	int		index;
+	write(1, " ", 1);
+	rush02(str);
+}
 
-	if (min >= max)
-		return (0);
-	range_num = (int*)malloc(max - min);
-	index = 0;
-	while (min < max)
-	{
-		range_num[index] = min;
-		min++;
-		index++;
-	}
-	return (range_num);
+void	print_init(char *hund)
+{
+	rush02(hund);
+	rush02_with_space("100");
+}
+
+void	ft_charcat_3(char *hund, char *ten, char *one, char *str)
+{
+	ft_charcat(hund, str[0]);
+	ft_charcat(ten, str[1]);
+	ft_charcat(one, str[2]);
 }

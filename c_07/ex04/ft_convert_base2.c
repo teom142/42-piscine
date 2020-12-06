@@ -6,11 +6,11 @@
 /*   By: teom </var/mail/teom>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 10:11:57 by teom              #+#    #+#             */
-/*   Updated: 2020/12/03 20:49:18 by teom             ###   ########.fr       */
+/*   Updated: 2020/12/06 10:47:23 by teom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		base_index(char *base, char c)
+int			base_index(char *base, char c)
 {
 	int		index;
 
@@ -24,7 +24,7 @@ int		base_index(char *base, char c)
 	return (-1);
 }
 
-int		base_exec_len(char *base)
+int			base_exec_len(char *base)
 {
 	int		len;
 	int		base_over[256];
@@ -50,7 +50,7 @@ int		base_exec_len(char *base)
 	return (len);
 }
 
-int		ft_atoi_base(char *str, char *base)
+int			ft_atoi_base(char *str, char *base)
 {
 	int		minus_num;
 	int		index_c;

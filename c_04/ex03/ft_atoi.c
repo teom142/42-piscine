@@ -6,7 +6,7 @@
 /*   By: teom <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 00:32:10 by teom              #+#    #+#             */
-/*   Updated: 2020/11/30 20:26:53 by teom             ###   ########.fr       */
+/*   Updated: 2020/12/02 21:16:37 by teom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,15 @@ int		ft_atoi(char *str)
 	while (it_is_num(*str))
 	{
 		val_atoi *= 10;
-		val_atoi += (int)*str - '0';
+		val_atoi += *str - '0';
 		str++;
 	}
 	return (val_atoi * minus_num);
+}
+
+#include <stdio.h>
+int main()
+{
+	char str[] = "   ----+-+2147483648a5678";
+	printf("%d",ft_atoi(str));
 }
