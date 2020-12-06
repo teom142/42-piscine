@@ -6,7 +6,7 @@
 /*   By: teom <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/06 18:15:27 by teom              #+#    #+#             */
-/*   Updated: 2020/12/06 23:12:15 by teom             ###   ########.fr       */
+/*   Updated: 2020/12/06 23:22:16 by teom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void			get_line(int fd, char *argv)
 	while (rd_suc)
 	{
 		line = (char*)malloc(g_size);
+		if (!line)
+			return ;
 		ft_charcat(line, c);
 		while (rd_suc && c != '\n')
 		{
@@ -53,7 +55,6 @@ void			get_line(int fd, char *argv)
 		{
 			ft_putline(line);
 		}
-		line[0] = 0;
 		rd_suc = read(fd, &c, 1);
 		free(line);
 	}
