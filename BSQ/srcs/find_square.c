@@ -52,6 +52,7 @@ unsigned int	curr_max_square(unsigned int i, unsigned int j)
 		next_j++;
 		square_size++;
 	}
+//	printf("%u %u %u\n", i, j, square_size);
 	return (square_size);
 }
 
@@ -82,10 +83,10 @@ void			find_square()
 
 	i = 0;
 	g_max_square = 0;
-	while (i + 1 < g_col)
+	while (i < g_col)
 	{
 		j = 0;
-		while (j + 1 < g_row)
+		while (j < g_row)
 		{
 			curr_square = curr_max_square(i, j);
 			if (curr_square > g_max_square)
