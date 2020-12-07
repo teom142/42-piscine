@@ -12,6 +12,8 @@
 
 #include "bsq.h"
 
+extern unsigned int	g_row;
+
 void			disp_map(char **map, unsigned int col)
 {
 	unsigned int	i;

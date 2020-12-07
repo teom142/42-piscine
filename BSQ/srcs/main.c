@@ -46,22 +46,23 @@ void	bsq(char *argv)//, int argc)
 			rd_suc = read(fd, &c, 1);
 		}
 		g_col = count_col(g_symbol);
+		g_symbol += g_sym_size - 4;
 		g_row = (g_size - g_sym_size) / g_col - 1;
 		g_map = (char**)malloc(sizeof(char*) * g_col);
 		get_map(g_map, fd);
-		disp_map(g_map, g_col);
 		close(fd);
 	}
-	printf("%u\n",g_row);
 }
 
 int	main(int argc, char *argv[])
 {
 	int		fd;
 
-	argc = 1;
-	//if (argc != 2)
-	fd = open(argv[1], O_RDONLY);
-	g_size = get_size(fd);
-	bsq(argv[1]);//, argc);
+	if (argc == 2)
+	{
+		fd = open(argv[1], O_RDONLY);
+		g_size = get_size(fd);
+		bsq(argv[1]);//, argc);
+		find_square();
+	}
 }

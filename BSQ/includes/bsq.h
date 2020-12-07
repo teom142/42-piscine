@@ -17,5 +17,6 @@ void			disp_map(char **map, unsigned int col);
 void			ft_charcat(char *str, char c);
 void			bsq(char *argv);
 void			get_map(char **map, int fd);
+void			find_square();
 
 #endif
