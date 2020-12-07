@@ -1,61 +1,67 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: teom <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/07 11:28:17 by teom              #+#    #+#             */
+/*   Updated: 2020/12/07 19:34:21 by teom             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "bsq.h"
 
 unsigned int	g_size;
-char		*g_symbol;
+unsigned int	g_row;
+unsigned int	g_col;
+unsigned int	g_sym_size;
+char			*g_symbol;
+char			**g_map;
 
-unsigned int	get_size(int fd, char *argv)
+#include <stdio.h>
+void	bsq(char *argv)//, int argc)
 {
-	char		c;
+	int		fd;
 	int		rd_suc;
-	unsigned int	cnt;
-
-	fd = open(argv, O_RDONLY);
-	rd_suc = read(fd, &c, 1);
-	cnt = 1;
-	while (rd_suc)
-	{
-		rd_suc = read(fd, &c, 1);
-		cnt++;
-	}
-	close(fd);
-	return (cnt);
-}
-
-void	bsq(char *argv)
-{
-	int	fd;
-	char	*map;
-	int	rd_suc;
 	char	c;
 
-	g_size = get_size(fd, argv);
+	g_sym_size = get_sym_size(argv);
+	g_symbol = (char*)malloc(g_sym_size + 1);
+	/*
+	if (argc != 1)
+		fd = open(argv, O_RDONLY);
+	else
+		fd = 0;
+		*/
 	fd = open(argv, O_RDONLY);
 	if (fd == -1)
 		ft_putstr(ERR_MSG);
 	else
 	{
 		rd_suc = read(fd, &c, 1);
-		g_symbol = (char*)malloc(5);
 		while (rd_suc && c != '\n')
 		{
 			ft_charcat(g_symbol, c);
 			rd_suc = read(fd, &c, 1);
 		}
-		*g_symbol = 0;
-		ft_putstr(g_symbol);
-		while (rd_suc)
-		{
-			map = (char*)malloc(g_size + 1);
-			rd_suc = read(fd, &c, 1);
-			ft_charcat(map, c);
-		}
+		g_col = count_col(g_symbol);
+		g_row = (g_size - g_sym_size) / g_col - 1;
+		g_map = (char**)malloc(sizeof(char*) * g_col);
+		get_map(g_map, fd);
+		disp_map(g_map, g_col);
 		close(fd);
 	}
+	printf("%u\n",g_row);
 }
-
 
 int	main(int argc, char *argv[])
 {
-	if (argc == 2)
-		bsq(argv[1]);
+	int		fd;
+
+	argc = 1;
+	//if (argc != 2)
+	fd = open(argv[1], O_RDONLY);
+	g_size = get_size(fd);
+	bsq(argv[1]);//, argc);
 }
