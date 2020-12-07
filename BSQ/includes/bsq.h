@@ -5,7 +5,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 
-# define ERR_MSG "Map Error"
+# define ERR_MSG "Map Error\n"
 
 void			ft_putstr(char *str);
 void			ft_putchar(char c);

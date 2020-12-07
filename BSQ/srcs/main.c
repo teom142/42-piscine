@@ -61,6 +61,11 @@ int	main(int argc, char *argv[])
 	if (argc == 2)
 	{
 		fd = open(argv[1], O_RDONLY);
+		if (fd == -1)
+		{
+			ft_putstr(ERR_MSG);
+			return (0);
+		}
 		g_size = get_size(fd);
 		bsq(argv[1]);//, argc);
 		find_square();
