@@ -1,11 +1,12 @@
 #include "bsq.h"
 
 extern char	*g_symbol;
-//extern char	**g_map;
+extern char	**g_map;
 extern char	g_empty;
 extern char	g_obstacle;
 extern char	g_fill;
-extern unsigned int g_col;
+extern int g_col;
+extern int g_row;
 
 void	get_symbols()
 {
@@ -18,7 +19,7 @@ void	get_symbols()
 	g_symbol[sym_len - 3] = 0;
 }
 
-char	*expand_str(char *str, unsigned int size)
+char	*expand_str(char *str, int size)
 {
 	char *ret;
 
@@ -28,40 +29,37 @@ char	*expand_str(char *str, unsigned int size)
 	free(str);
 	return (ret);
 }
-#include <stdio.h>
-void	read_map_sub(int fd, char **map, int rd_suc, char c)
-{
-	unsigned int	i;
-	unsigned int	size;
 
-	if(!(map = (char**)malloc(sizeof(char*) * g_col)))
-		exit (1);
+void	read_map_sub(int fd, int rd_suc, char c)
+{
+	int	i;
+	int	size;
+
 	i = 0;
 	while (i < g_col)
 	{
 		size = 1;
-		if (!(map[i] = (char*)malloc(size + 1)))
+		if (!(g_map[i] = (char*)malloc(size + 1)))
 			exit(1);
-		printf("%c",c);
 		rd_suc = read(fd, &c, 1);
 		while (rd_suc && c != '\n')
 		{
-			map[i][size - 1] = c;
-			map[i][size] = 0;
-			map[i] = expand_str(map[i], size);
+			g_map[i][size - 1] = c;
+			g_map[i][size] = 0;
+			g_map[i] = expand_str(g_map[i], size);
 			rd_suc = read(fd, &c, 1);
 			size++;
 		}
 		i++;
 	}
+	g_row = size - 1;
 }
 		
-void	read_map(int fd, char **map)
+void	read_map(int fd)
 {
 	int	rd_suc;
-	unsigned int size;
+	int size;
 	char	c;
-//	unsigned int i;
 
 	size = 1;
 	if (fd == -1)
@@ -81,28 +79,8 @@ void	read_map(int fd, char **map)
 		}
 		get_symbols();
 		g_col = count_col(g_symbol);
-		//if(!(map = (char**)malloc(sizeof(char*) * g_col)))
-		//	exit(1);
-		read_map_sub(fd, map, rd_suc, c);
-		/*
-		i = 0;
-		while (i < g_col)
-		{
-			size = 1;
-			if(!(map[i] = (char*)malloc(size + 1)))
-				exit(1);
-			rd_suc = read(fd, &c, 1);
-			while (c != '\n' && rd_suc)
-			{
-				map[i][size - 1] = c;
-				map[i][size] = 0;
-				map[i] = expand_str(map[i], size);
-				rd_suc = read(fd, &c, 1);
-				size++;
-			}
-			i++;
-		}*/
-		disp_map(map, g_col);
+		if(!(g_map = (char**)malloc(sizeof(char*) * g_col)))
+			exit(1);
+		read_map_sub(fd, size, c);
 	}
-	close(fd);
 }

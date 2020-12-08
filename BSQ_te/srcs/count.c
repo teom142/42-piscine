@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "bsq.h"
-
+/*
 unsigned int	get_size(int fd)
 {
 	char			c;
@@ -46,7 +46,7 @@ unsigned int	get_sym_size(char *argv)
 	}
 	return (ret);
 }
-
+*/
 unsigned int	count_col(char *symbol)
 {
 	unsigned int	ret;

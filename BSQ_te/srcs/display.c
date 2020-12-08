@@ -26,7 +26,7 @@ void			disp_map(char **map, unsigned int col)
 		i++;
 	}
 }
-
+/*
 void			get_map(char **map, int fd)
 {
 	int		i;
@@ -52,4 +52,4 @@ void			get_map(char **map, int fd)
 		}
 		rd_suc = read(fd, &c, 1);
 	}
-}
+}*/

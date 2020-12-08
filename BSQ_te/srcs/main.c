@@ -12,18 +12,17 @@
 
 #include "bsq.h"
 
-unsigned int	g_size;
-unsigned int	g_row;
-unsigned int	g_col;
-unsigned int	g_sym_size;
+int		g_size;
+int		g_row;
+int		g_col;
+int		g_sym_size;
 char			*g_symbol;
 char			**g_map;
 char		g_empty;
 char		g_obstacle;
 char		g_fill;
-
-#include <stdio.h>
-void	bsq(char *argv)//, int argc)
+/*
+void	bsq(char *argv)
 {
 	int		fd;
 	int		rd_suc;
@@ -31,12 +30,6 @@ void	bsq(char *argv)//, int argc)
 
 	g_sym_size = get_sym_size(argv);
 	g_symbol = (char*)malloc(g_sym_size + 1);
-	/*
-	if (argc != 1)
-		fd = open(argv, O_RDONLY);
-	else
-		fd = 0;
-		*/
 	fd = open(argv, O_RDONLY);
 	if (fd == -1)
 		ft_putstr(ERR_MSG);
@@ -56,7 +49,7 @@ void	bsq(char *argv)//, int argc)
 		close(fd);
 	}
 }
-
+*/
 int	main(int argc, char *argv[])
 {
 	int fd;
@@ -65,21 +58,8 @@ int	main(int argc, char *argv[])
 		fd = 0;
 	if (argc == 2)
 		fd = open(argv[1],O_RDONLY);
-	read_map(fd, g_map);
-	/*
-	int		fd;
-
-	if (argc == 2)
-	{
-		fd = open(argv[1], O_RDONLY);
-		if (fd == -1)
-		{
-			ft_putstr(ERR_MSG);
-			return (0);
-		}
-		g_size = get_size(fd);
-		bsq(argv[1]);//, argc);
-		find_square();
-	}
-	*/
+	read_map(fd);
+	close(fd);
+	find_square();
+	disp_map(g_map, g_col);
 }
