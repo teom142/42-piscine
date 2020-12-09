@@ -6,7 +6,7 @@
 /*   By: teom <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 14:39:50 by teom              #+#    #+#             */
-/*   Updated: 2020/12/09 20:02:07 by soojpark         ###   ########.fr       */
+/*   Updated: 2020/12/09 22:50:16 by teom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,19 @@ void			free_map(int col)
 			free(g_map[i++]);
 		free(g_map);
 	}
+}
+
+int				symbol_chk(char *symbol)
+{
+	int		i;
+
+	i = -1;
+	while (symbol[++i])
+	{
+		if (symbol[i] < 32 || 126 < symbol[i])
+			return (1);
+	}
+	if (g_empty == g_obstacle || g_empty == g_fill || g_obstacle == g_fill)
+		return (1);
+	return (0);
 }

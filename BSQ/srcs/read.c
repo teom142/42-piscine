@@ -6,7 +6,7 @@
 /*   By: soojpark <soojpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/09 10:32:35 by soojpark          #+#    #+#             */
-/*   Updated: 2020/12/09 20:34:18 by soojpark         ###   ########.fr       */
+/*   Updated: 2020/12/09 22:50:33 by teom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ extern char		g_fill;
 extern int		g_col;
 extern int		g_row;
 extern int		g_free;
+int				g_flag;
 
 void	get_symbols(void)
 {
@@ -61,29 +62,25 @@ int		read_map_sub(int fd, int rd_suc, int size, int chk_size)
 {
 	int		i;
 	char	c;
-	int		flag;
 
 	i = -1;
-	while (++i < g_col)
+	while (++i < g_col && (size = 1))
 	{
-		flag = 0;
-		size = 1;
+		g_flag = 0;
 		if (!(g_map[i] = (char*)malloc(size + 1)))
 			return (i + 1);
 		rd_suc = read(fd, &c, 1);
 		while (rd_suc && c != '\n')
 		{
 			if (c != g_empty && c != g_obstacle)
-				flag++;
+				g_flag = 1;
 			if (!(g_map[i] = expand_str(g_map[i], size++, c)))
 				return (i + 1);
 			rd_suc = read(fd, &c, 1);
 		}
-		if (flag)
-			return (i + 1);
 		if (chk_size == -1)
 			chk_size = size;
-		if (chk_size != size || size == 1)
+		if (chk_size != size || size == 1 || g_flag)
 			return (i + 1);
 	}
 	g_row = size - 1;
