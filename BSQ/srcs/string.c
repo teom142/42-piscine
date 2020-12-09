@@ -6,13 +6,16 @@
 /*   By: teom <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 11:28:30 by teom              #+#    #+#             */
-/*   Updated: 2020/12/07 12:04:11 by teom             ###   ########.fr       */
+/*   Updated: 2020/12/09 17:15:55 by teom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
 
-void	ft_putstr(char *str)
+extern char		*g_symbol;
+extern int		g_col;
+
+void			ft_putstr(char *str)
 {
 	while (*str)
 	{
@@ -21,15 +24,19 @@ void	ft_putstr(char *str)
 	}
 }
 
-void	ft_putchar(char c)
+void			ft_strcpy(char *dest, char *src)
 {
-	write(1, &c, 1);
+	while (*src)
+		*(dest++) = *(src++);
+	*dest = 0;
 }
 
-void	ft_charcat(char *str, char c)
+unsigned int	ft_strlen(char *str)
 {
-	while (*str)
-		str++;
-	*(str++) = c;
-	*str = 0;
+	unsigned int	len;
+
+	len = 0;
+	while (str[len])
+		len++;
+	return (len);
 }

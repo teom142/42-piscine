@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   bsq.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: soojpark <soojpark@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/09 10:36:50 by soojpark          #+#    #+#             */
+/*   Updated: 2020/12/09 17:17:41 by teom             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef BSQ_H
 # define BSQ_H
 
@@ -8,15 +20,14 @@
 # define ERR_MSG "Map Error\n"
 
 void			ft_putstr(char *str);
-void			ft_putchar(char c);
-unsigned int	count_col(char *symbol);
-unsigned int	get_size(int fd);
-unsigned int	count_row(char *map);
-unsigned int	get_sym_size(char *argv);
-void			disp_map(char **map, unsigned int col);
-void			ft_charcat(char *str, char c);
-void			bsq(char *argv);
-void			get_map(char **map, int fd);
-void			find_square();
+void			ft_strcpy(char *dest, char *src);
+unsigned int	ft_strlen(char *str);
+int				count_col(char *symbol);
+int				symbol_chk(char *symbol);
+void			disp_map(char **map, int col);
+void			find_square(void);
+int				read_map(int fd, int temp);
+void			free_map(int col);
+void			size_check(int chk_size, int size);
 
 #endif

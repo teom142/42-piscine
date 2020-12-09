@@ -6,17 +6,23 @@
 /*   By: teom <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 14:39:50 by teom              #+#    #+#             */
-/*   Updated: 2020/12/07 20:34:22 by teom             ###   ########.fr       */
+/*   Updated: 2020/12/09 20:02:07 by soojpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
 
-extern unsigned int	g_row;
+extern int		g_row;
+extern char		**g_map;
+extern char		*g_symbol;
+extern char		g_empty;
+extern char		g_obstacle;
+extern char		g_fill;
+extern int		g_free;
 
-void			disp_map(char **map, unsigned int col)
+void			disp_map(char **map, int col)
 {
-	unsigned int	i;
+	int		i;
 
 	i = 0;
 	while (i < col)
@@ -27,29 +33,33 @@ void			disp_map(char **map, unsigned int col)
 	}
 }
 
-void			get_map(char **map, int fd)
+int				count_col(char *symbol)
+{
+	int		ret;
+
+	ret = 0;
+	while (*symbol)
+	{
+		if (*symbol < '0' || *symbol > '9')
+			return (0);
+		ret *= 10;
+		ret += (int)*symbol - '0';
+		symbol++;
+	}
+	return (ret);
+}
+
+void			free_map(int col)
 {
 	int		i;
-	int		j;
-	int		rd_suc;
-	char	c;
 
-	i = -1;
-	j = 0;
-	rd_suc = read(fd, &c, 1);
-	while (rd_suc)
+	i = 0;
+	if (g_free)
+		free(g_symbol);
+	if (g_free == 2)
 	{
-		if (j % g_row == 0 && c != '\n')
-		{
-			i++;
-			map[i] = (char *)malloc(g_row + 1);
-			map[i][0] = 0;
-		}
-		if (c != '\n')
-		{
-			ft_charcat(map[i], c);
-			j++;
-		}
-		rd_suc = read(fd, &c, 1);
+		while (i < col)
+			free(g_map[i++]);
+		free(g_map);
 	}
 }

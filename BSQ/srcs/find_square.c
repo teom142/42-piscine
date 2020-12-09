@@ -6,30 +6,31 @@
 /*   By: teom <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 20:27:05 by teom              #+#    #+#             */
-/*   Updated: 2020/12/07 20:39:36 by teom             ###   ########.fr       */
+/*   Updated: 2020/12/09 10:38:41 by soojpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
-#include <stdio.h>
 
-extern unsigned int		g_row;
-extern unsigned int		g_col;
-extern char				**g_map;
-extern char				*g_symbol;
-unsigned int			g_max_square;
-int						g_square_i;
-int						g_square_j;
+extern int		g_row;
+extern int		g_col;
+extern char		**g_map;
+extern char		g_empty;
+extern char		g_obstacle;
+extern char		g_fill;
+int				g_max_square;
+int				g_square_i;
+int				g_square_j;
 
-int		square_possible(unsigned int i, unsigned int j, unsigned int next_i, unsigned int next_j)
+int				square_possible(int i, int j, int next_i, int next_j)
 {
 	while (i <= next_i)
 	{
 		if (next_i == g_col || next_j == g_row)
 			return (0);
-		if (g_map[i][next_j] == g_symbol[1])
+		if (g_map[i][next_j] == g_obstacle)
 			return (0);
-		if (g_map[next_i][j] == g_symbol[1])
+		if (g_map[next_i][j] == g_obstacle)
 			return (0);
 		i++;
 		j++;
@@ -37,11 +38,11 @@ int		square_possible(unsigned int i, unsigned int j, unsigned int next_i, unsign
 	return (1);
 }
 
-unsigned int	curr_max_square(unsigned int i, unsigned int j)
+unsigned int	curr_max_square(int i, int j)
 {
-	unsigned int	next_i;
-	unsigned int	next_j;
-	unsigned int	square_size;
+	int	next_i;
+	int	next_j;
+	int	square_size;
 
 	next_i = i;
 	next_j = j;
@@ -52,14 +53,13 @@ unsigned int	curr_max_square(unsigned int i, unsigned int j)
 		next_j++;
 		square_size++;
 	}
-//	printf("%u %u %u\n", i, j, square_size);
 	return (square_size);
 }
 
-void			fill_box()
+void			fill_box(void)
 {
-	unsigned int	i;
-	unsigned int	j;
+	int	i;
+	int	j;
 
 	i = g_square_i;
 	while (i < g_square_i + g_max_square)
@@ -67,19 +67,18 @@ void			fill_box()
 		j = g_square_j;
 		while (j < g_square_j + g_max_square)
 		{
-			g_map[i][j] = g_symbol[2];
+			g_map[i][j] = g_fill;
 			j++;
 		}
 		i++;
 	}
-	disp_map(g_map, g_col);
 }
 
-void			find_square()
+void			find_square(void)
 {
-	unsigned int			i;
-	unsigned int			j;
-	unsigned int	curr_square;
+	int	i;
+	int	j;
+	int	curr_square;
 
 	i = 0;
 	g_max_square = 0;
